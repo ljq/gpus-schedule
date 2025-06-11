@@ -38,6 +38,7 @@ init:
 .PHONY: build
 build: init
 	$(GOBUILD) $(LDFLAGS) -o $(BINARY_DIR)/$(BINARY_NAME) ./
+	cp $(CONFIG_DIR)/scheduler.yaml $(BINARY_DIR)/
 
 # 运行
 .PHONY: run

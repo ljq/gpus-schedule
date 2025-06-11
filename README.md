@@ -1,5 +1,7 @@
 # GPUs-scheduler
 
+[中文文档](./README.zh-CN.md)
+
 # GPU computing power scheduling system design ideas
 According to the requirements of readme.txt, I will design a streamlined localized GPU computing power scheduling system. The following is my design idea:
 
@@ -101,4 +103,4 @@ The system will adopt a layered architecture design:
 - Prioritize system stability and resource isolation
 
 ### 8. Instructions
-For detailed installation and usage instructions, please refer to [Document Directory](./doc/).
+For detailed installation and usage instructions, please refer to [/doc](./doc/).
