@@ -1,0 +1,71 @@
+# GPU调度器配置文件
+
+# 系统配置
+system:
+  # 服务监听地址和端口
+  host: "0.0.0.0"
+  port: 8080
+  # 日志级别: debug, info, warn, error
+  log_level: "info"
+  # 日志文件路径，为空则输出到标准输出
+  log_file: ""
+
+# GPU资源配置
+gpu:
+  # 是否启用GPU资源管理
+  enabled: true
+  # 可用的GPU设备ID列表，为空则使用所有可用设备
+  devices: [0, 1, 2, 3]
+  # 每个GPU的最大内存使用百分比(0-100)
+  max_memory_percent: 95
+  # 每个GPU的最大计算负载百分比(0-100)
+  max_compute_percent: 95
+  # GPU资源检查间隔(秒)
+  check_interval: 5
+
+# 调度策略配置
+scheduler:
+  # 调度算法: round_robin, least_used, priority
+  algorithm: "least_used"
+  # 任务队列最大长度
+  queue_size: 100
+  # 调度间隔(毫秒)
+  interval: 500
+  # 任务超时时间(秒)，0表示不超时
+  task_timeout: 3600
+  # 是否启用抢占式调度
+  preemptive: false
+
+# 多租户配置
+tenants:
+  # 默认租户配置
+  default:
+    # 最大可用GPU数量
+    max_gpus: 1
+    # 每个GPU最大内存使用量(MB)，0表示不限制
+    max_memory_per_gpu: 0
+    # 优先级(1-100)，数字越大优先级越高
+    priority: 50
+  # 高优先级租户示例
+  high_priority:
+    max_gpus: 2
+    max_memory_per_gpu: 16000
+    priority: 80
+  # 低优先级租户示例
+  low_priority:
+    max_gpus: 1
+    max_memory_per_gpu: 8000
+    priority: 30
+
+# 监控系统配置
+monitor:
+  # 是否启用监控
+  enabled: true
+  # 监控数据收集间隔(秒)
+  interval: 10
+  # 监控数据保留时间(小时)
+  retention: 24
+  # 是否启用HTTP API
+  http_api: true
+  # HTTP API端口
+  http_port: 8081
