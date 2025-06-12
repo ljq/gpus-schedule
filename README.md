@@ -1,5 +1,8 @@
 # GPUs-scheduler
 
+### Desktop level small GPU station：a minimalist GPU scheduler implementation sulution. 
+
+
 [中文文档](./README.zh-CN.md)
 
 # GPU computing power scheduling system design ideas
