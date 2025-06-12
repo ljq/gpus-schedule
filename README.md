@@ -1,6 +1,6 @@
 # GPUs-scheduler
 
-### Desktop level small GPU station：a minimalist GPU scheduler implementation sulution. 
+### Desktop level small GPU station：a minimalist GPU scheduler implementation sulution. Please do not use in production environment without sufficient verification!
 
 
 [中文文档](./README.zh-CN.md)
