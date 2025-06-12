@@ -1,43 +1,53 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GPU算力调度系统监控 - Jack Liu ( ljq@GitHub )</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/chart.js@4.3.0/dist/chart.min.css">
+    <title>GPU算力调度系统监控 - by Jack Liu ( ljq@GitHub )</title>
+    <link rel="stylesheet" href="./static/bootstrap.min.css">
+    <link rel="stylesheet" href="./static/chart.umd.min.js">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
     <style>
         body {
             padding-top: 20px;
             background-color: #f8f9fa;
         }
+
         .card {
             margin-bottom: 20px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
+
         .card-header {
             font-weight: bold;
             background-color: #f1f8ff;
         }
+
         .gpu-card {
             transition: all 0.3s ease;
         }
+
         .gpu-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
         }
+
         .progress {
             height: 20px;
             margin-bottom: 10px;
         }
+
         .progress-bar {
             line-height: 20px;
             font-size: 12px;
             font-weight: bold;
         }
+
         .badge {
             font-size: 85%;
         }
+
         .tenant-badge {
             font-size: 90%;
             padding: 5px 10px;
@@ -45,14 +55,17 @@
             margin-bottom: 5px;
             display: inline-block;
         }
+
         .refresh-btn {
             margin-left: 10px;
         }
+
         .chart-container {
             position: relative;
             height: 250px;
             width: 100%;
         }
+
         .status-indicator {
             width: 12px;
             height: 12px;
@@ -60,14 +73,17 @@
             display: inline-block;
             margin-right: 5px;
         }
+
         .status-free {
             background-color: #28a745;
         }
+
         .status-allocated {
             background-color: #dc3545;
         }
     </style>
 </head>
+
 <body>
     <div class="container">
         <header class="d-flex justify-content-between align-items-center mb-4">
@@ -123,13 +139,15 @@
                         <div class="mb-3">
                             <label>平均GPU利用率</label>
                             <div class="progress">
-                                <div id="avg-utilization" class="progress-bar bg-primary" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">0%</div>
+                                <div id="avg-utilization" class="progress-bar bg-primary" role="progressbar"
+                                    style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">0%</div>
                             </div>
                         </div>
                         <div class="mb-3">
                             <label>平均显存使用率</label>
                             <div class="progress">
-                                <div id="avg-memory" class="progress-bar bg-success" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">0%</div>
+                                <div id="avg-memory" class="progress-bar bg-success" role="progressbar"
+                                    style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">0%</div>
                             </div>
                         </div>
                         <div class="mb-3">
@@ -187,8 +205,6 @@
         </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.3.0/dist/chart.umd.min.js"></script>
     <script>
         // 全局变量
         let refreshInterval = 5000;
@@ -197,7 +213,7 @@
         let deviceHistory = {};
 
         // 页面加载完成后执行
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             // 初始化刷新间隔
             const intervalSelect = document.getElementById('refresh-interval');
             refreshInterval = parseInt(intervalSelect.value);
@@ -206,7 +222,7 @@
             document.getElementById('refresh-btn').addEventListener('click', fetchData);
 
             // 设置刷新间隔变更事件
-            intervalSelect.addEventListener('change', function() {
+            intervalSelect.addEventListener('change', function () {
                 refreshInterval = parseInt(this.value);
                 if (refreshTimer) {
                     clearInterval(refreshTimer);
@@ -515,4 +531,5 @@
         }
     </script>
 </body>
+
 </html>
